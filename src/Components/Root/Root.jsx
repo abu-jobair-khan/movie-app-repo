@@ -7,7 +7,8 @@ export default function Root(){
 
     return <>
     
-    <div>
+    <div className=" ">
+        <div>
         <Navbar/>
     </div>
 
@@ -19,6 +20,7 @@ export default function Root(){
         <Footer/>
     </div>
     
+    </div>
     
     </>
 }
