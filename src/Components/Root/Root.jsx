@@ -8,17 +8,12 @@ export default function Root(){
     return <>
     
     <div className=" ">
-        <div>
         <Navbar/>
-    </div>
-
-    <div>
+        <div>
         <Outlet/>
-    </div>
-      
-    <div>
+        </div>
         <Footer/>
-    </div>
+
     
     </div>
     

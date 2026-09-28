@@ -1,8 +1,47 @@
+import { useEffect, useState } from "react"
+
 export default function Movielist(){
+
+
+  const [loader, setLoader] = useState(true)
+
+
+  useEffect( ()=>  {
+
+    const timer = setTimeout( () => {
+        setLoader(false);
+    },2000);
+
+    return () => clearTimeout(timer);
+
+
+
+
+  }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return <>
     
-    <h1 className="text-3xl font-bold">This is movie list page....</h1>
+    
+    {
+        loader ?  <span className="loading loading-spinner loading-xl"></span> : <p>done </p>
+
+    }
     
     </>
 }
