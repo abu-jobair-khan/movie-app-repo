@@ -1,47 +1,48 @@
 import { useEffect, useState } from "react"
+import Card from "../Cards/Card"
 
 export default function Movielist(){
 
 
-  const [loader, setLoader] = useState(true)
+  
+  const [data , setdata] = useState([])
+  const [error , setError] = useState("")
+
+    useEffect( ()=> {
+      const fetchData = async() => {
+        try{
+          
+          const res = await fetch("https://api.tvmaze.com/shows");
+          // console.log(res)
+          const result = await res.json();
+          // console.log(result)
+          setdata(result)
+        } catch(err) {
+          console.log(err.message)
+        } finally {
+        
+        }
+      } ;
+
+      fetchData();
 
 
-  useEffect( ()=>  {
+    },[])
 
-    const timer = setTimeout( () => {
-        setLoader(false);
-    },2000);
+    console.log(data)
 
-    return () => clearTimeout(timer);
-
-
-
-
-  }, []);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
     return <>
-    
-    
-    {
-        loader ?  <span className="loading loading-spinner loading-xl"></span> : <p>done </p>
 
+  <div className=" ml-[3vw] mt-[5vh] grid grid-cols-4 gap-4">
+    {
+      data.map( (x)=>  <Card   props={x}/> )
     }
+  
+  </div>  
+    
+  
     
     </>
 }
